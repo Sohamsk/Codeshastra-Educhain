@@ -7,8 +7,8 @@ import Header from './components/Header';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: 'Clerk App',
-  description: 'Example Clerk App',
+  title: 'EduChain',
+  description: 'A Blockchain Solution to Democratize Learning',
 };
 
 export default function RootLayout({ children }) {
