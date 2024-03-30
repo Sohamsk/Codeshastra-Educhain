@@ -1,27 +1,29 @@
 import { connect } from "@/db/connection";
-import { isValidObjectId } from "mongoose"; // For robust ID validation
+import { NextResponse } from "next/server";
+import course from "@/db/models/course";
 
-export default async function handler(req, res) {
+export default async function POST(req) {
   connect();
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method Not Allowed" }); // Handle non-POST requests
-  }
 
   try {
-    const educatorId = req.body.id;
+    const body = await req.json();
+    const educatorId = body.id;
 
-    // Fetch educator courses using Mongoose or your preferred database library
-    const educatorCourses = await Course.find({ author_id: educatorId });
+    const educatorCourses = await course.find({ author_id: educatorId });
 
     if (educatorCourses) {
-      return res.status(200).json(educatorCourses);
+      return NextResponse.json(educatorCourses, { status: 200 });
     } else {
-      return res
-        .status(404)
-        .json({ message: "No courses available for this educator" });
+      return NextResponse.json(
+        { message: "No courses available for this educator" },
+        { status: 404 }
+      );
     }
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: "Internal Server Error" }); // Handle errors gracefully
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
   }
 }

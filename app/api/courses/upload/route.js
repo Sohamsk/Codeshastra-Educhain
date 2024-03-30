@@ -1,4 +1,5 @@
 import { connect } from "@/db/connection";
+import course from "@/db/models/course";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
@@ -20,12 +21,12 @@ export async function POST(req) {
   if (name == null || undefined) {
     return NextResponse.json({ status: 400 });
   } else {
-    const checkcourse = await Course.findOne({ id: id });
+    const checkcourse = await course.findOne({ id: id });
     if (checkcourse) {
       console.log("Already in database,id= ", id, " name= ", name);
       return NextResponse.json({ status: 400 });
     } else {
-      await Course.create({
+      await course.create({
         name: name,
         id: id,
         description: description,
