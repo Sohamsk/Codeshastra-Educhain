@@ -1,6 +1,7 @@
-import { Mongoose } from "mongoose";
+import mongoose from "mongoose";
+const { Schema, model } = mongoose;
 
-const courseSchema = new Mongoose.Schema({
+const courseSchema = Schema({
   name: {
     type: String,
     required: true,
@@ -54,4 +55,5 @@ const courseSchema = new Mongoose.Schema({
   },
 });
 
-export default Mongoose.model("Course", courseSchema);
+const Course = mongoose.models.Course || model("Course", courseSchema);
+export default Course;
