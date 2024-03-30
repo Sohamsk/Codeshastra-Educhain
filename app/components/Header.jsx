@@ -22,7 +22,7 @@ const Header = async ({ username }) => {
 
 
           <div classNameName='block py-2 px-3 text-white rounded md:text-blue-700 md:p-0'>
-            <UserButton classNameName="gap-2" afterSignOutUrl='/' />
+            <UserButton classNameName="gap-2" afterSignOutUrl='/' showName />
           </div>
 
           <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden" aria-controls="mobile-menu-2" aria-expanded="false">
