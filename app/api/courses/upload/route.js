@@ -17,7 +17,7 @@ export async function POST(req) {
     users,
     thumbnail,
     content,
-  } = req.json;
+  } = await req.json;
   if (name == null || undefined) {
     return NextResponse.json({ status: 400 });
   } else {

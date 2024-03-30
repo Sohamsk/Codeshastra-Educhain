@@ -2,7 +2,7 @@ import { connect } from "@/db/connection";
 import course from "@/db/models/course";
 import { NextResponse } from "next/server";
 
-export default async function handler(req, res) {
+export default async function POST(req) {
   connect();
   const { course_id } = await req.json();
   if (course_id == null)
