@@ -81,7 +81,7 @@ const CreateCoursePage = () => {
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-base font-semibold leading-7 text-black">Notifications</h2>
           <p className="mt-1 text-sm leading-6 text-black">
-            We'll always let you know about important changes, but you pick what else you want to hear about.
+            We&apos;ll always let you know about important changes, but you pick what else you want to hear about.
           </p>
 
         </div>
