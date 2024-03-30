@@ -6,17 +6,16 @@ export async function POST(req) {
   connect();
   const {
     name,
-    id,
     description,
     author,
-    author_id,
-    address,
+    author_address,
     price,
-    question,
-    deadline,
-    users,
-    thumbnail,
-    content,
+    links
+    // question,
+    // deadline,
+    // users,
+    // thumbnail,
+    // content,
   } = await req.json;
   if (name == null || undefined) {
     return NextResponse.json({ status: 400 });
@@ -28,17 +27,17 @@ export async function POST(req) {
     } else {
       await course.create({
         name: name,
-        id: id,
-        description: description,
         author: author,
-        author_id: author_id,
-        address: address,
+        author_address: author_address,
+        description: description,
         price: price,
-        question: question,
-        deadline: deadline,
-        users: users,
-        thumbnail: thumbnail.toString("base64"), // handle file handling
-        content: content, // handle files
+        students: [],
+        links: links
+        // question: question,
+        // deadline: deadline,
+        // users: users,
+        // thumbnail: thumbnail.toString("base64"), // handle file handling
+        // content: content, // handle files
       });
       return NextResponse.json({ result: "Success!" }, { status: 200 });
     }
