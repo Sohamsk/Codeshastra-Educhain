@@ -120,7 +120,7 @@ const CourseNoPage = () => {
                             </ul>
                         </div>
                         <div className="mt-8 max-w-md">
-                            <button type="button" className="w-full mt-8 px-4 py-2 bg-transparent border-2 bg-black text-white font-bold rounded">Buy Now</button>
+                            <button type="button" className="w-full mt-8 px-4 py-2 bg-transparent border-2 bg-indigo-600 font-bold rounded">Buy Now</button>
                         </div>
                     </div>
                 </div>
