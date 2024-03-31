@@ -2,6 +2,7 @@ import { connect } from "@/db/connection";
 import course from "@/db/models/course";
 import { auth, clerkClient } from "@clerk/nextjs";
 import { NextResponse } from "next/server";
+import ethers from "ethers";
 
 export async function POST(req) {
   try {
@@ -13,6 +14,9 @@ export async function POST(req) {
     const { web3Wallets, firstName, lastName } =
       await clerkClient.users.getUser(userId);
     const author_address = web3Wallets[0].web3Wallet;
+
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    console.log(provider);
 
     if (title == null || undefined) {
       return NextResponse.json({ status: 400 });
