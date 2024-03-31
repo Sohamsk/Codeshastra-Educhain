@@ -1,9 +1,22 @@
+"use client"
 import { PhotoIcon, UserCircleIcon } from '@heroicons/react/24/solid';
+import axios from 'axios';
+import { useState } from 'react';
 
 const CreateCoursePage = () => {
+  const [body, setBody] = useState({
+    title: "",
+    price: 0,
+    about: ""
+  })
+
+ async function handleSubmit(e) {
+    e.preventDefault()
+    await axios.post('/api/courses/upload', body)
+  }
   return (
     <>
-    <form className='mb-16'>
+    <form className='mb-16' onSubmit={ handleSubmit } encType='multipart/form-data'>
       <div className="mt-4 lg:max-w-2xl sm:max-w-xl">
         <div className="border-b border-gray-900/10 pb-12">
           <h2 className="text-2xl font-bold text-center leading-7 text-black">
@@ -15,7 +28,7 @@ const CreateCoursePage = () => {
 
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-4">
-              <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
+              <label htmlFor="title" className="block text-sm font-medium leading-6 text-black">
                 Course Title
               </label>
               <div className="mt-2">
@@ -29,14 +42,14 @@ const CreateCoursePage = () => {
                     id="title"
                     autoComplete="title"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-black placeholder:text-black focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="Fullstack Web3 Developer Bootcamp"
+                    placeholder="Fullstack Web3 Developer Bootcamp" onChange={e => setBody({...body, title: e.target.value})} required
                   />
                 </div>
               </div>
             </div>
 
             <div className="sm:col-span-4">
-              <label htmlFor="username" className="block text-sm font-medium leading-6 text-black">
+              <label htmlFor="price" className="block text-sm font-medium leading-6 text-black">
                 Course Price (MATIC)
               </label>
               <div className="mt-2">
@@ -50,7 +63,7 @@ const CreateCoursePage = () => {
                     id="price"
                     autoComplete="price"
                     className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-black placeholder:text-black focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="1 MATIC"
+                    placeholder="1 MATIC" onChange={e => setBody({...body,price: e.target.value})} required
                   />
                 </div>
               </div>
@@ -66,7 +79,7 @@ const CreateCoursePage = () => {
                   name="about"
                   rows={3}
                   className="block w-full rounded-md border-0 py-1.5 text-black shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  defaultValue={''}
+                  defaultValue={''} onChange={e => setBody({...body,about: e.target.value})} required
                 />
               </div>
               <p className="mt-3 text-sm leading-6 text-black">
