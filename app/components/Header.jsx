@@ -16,14 +16,14 @@ const Header = async ({ username }) => {
             <>
               <Link href="/sign-in" className="text-black hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Creator Login</Link>
 
-              <Link href="/sign-up" className="text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Student Login</Link>
+              <Link href="/sign-up" className="text-white bg-black hover:bg-indigo-600 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 focus:outline-none">Student Login</Link>
             </>
           )}
 
 
-          <div className='block py-2 px-3 text-white rounded md:text-blue-700 md:p-0'>
+          {/* <div className='block py-2 px-3 text-white rounded md:text-blue-700 md:p-0'>
             <UserButton className="gap-2" afterSignOutUrl='/' showName />
-          </div>
+          </div> */}
 
           <button data-collapse-toggle="mobile-menu-2" type="button" className="inline-flex items-center p-2 ml-1 text-sm text-black rounded-lg lg:hidden" aria-controls="mobile-menu-2" aria-expanded="false">
             <span className="sr-only">Open main menu</span>
